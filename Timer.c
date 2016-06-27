@@ -8,7 +8,7 @@
 //设置载波频率
 #define TIMER_CONFIG_KHZ(val) ({ \
 	const uint8_t pwmval = SYSCLOCK / 2000 / (val); \ // = 16Mhz / (2 * 38khz) = 16000000 / (2 * 38000)
-	TCCR2A               = _BV(WGM20); \ //Mode 5 PWM,Phase Correct
+	TCCR2A               = _BV(WGM20); \ //Mode 5 PWM,Phase Correct TOP is OCRA
 	TCCR2B               = _BV(WGM22) | _BV(CS20); \ //No prescaling
 	OCR2A                = pwmval; \
 	OCR2B                = pwmval / 3; \
